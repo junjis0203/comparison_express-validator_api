@@ -1,0 +1,31 @@
+<%
+errors = typeof(errors) != "undefined" ? errors : [];
+%>
+<html>
+    <body>
+        <div>
+            <a href="/new_api">new API</a>
+            <a href="/legacy_api">legacy API</a>
+        </div>
+        <form action="" method="POST">
+            <table>
+                <tr><td>Name</td><td><input name="name" type="text" /></td></tr>
+                <tr><td>E-mail</td><td><input name="mail" type="email" /></td></tr>
+                <tr><td></td><td><input type="submit"></td></tr>
+            </table>
+        </form>
+        <div>
+            <ul>
+            <% errors.forEach(function(error) { %>
+            <li><%= error.param %>: <%= error.msg %></li>
+            <% }); %>
+            </ul>
+        </div>
+        <table border="1">
+            <tr><th>Name</th><th>E-mail</th></tr>
+            <% entries.forEach(function(entry) { %>
+            <tr><td><%= entry.name %></td><td><%= entry.mail %></td></tr>
+            <% }); %>
+        </table>
+    </body>
+</html>
